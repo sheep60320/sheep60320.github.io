@@ -1,0 +1,11 @@
+/* line 1, ../sass/base.scss */
+img {
+  max-width: 100%;
+  height: 300px;
+}
+
+/* line 5, ../sass/base.scss */
+.top-img {
+  width: 100%;
+  cursor: pointer;
+}
