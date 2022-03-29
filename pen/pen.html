@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>刮刮履歷</title>
+		<style type="text/css">
+            .area{
+				position: relative;
+            }
+			canvas{
+				border: 1px solid black;
+			    cursor: crosshair;
+				position: absolute;
+                top: 0;
+                left: 0;
+			}
+            #title{
+                margin: 10px 0;
+            }
+			
+		</style>
+	</head>
+	<body>
+        <h1 id="title">請刮開指定區域</h1>
+		<div class="area">
+            <canvas id="c2" width="1240" height="1754"></canvas>
+            <canvas id="c1" width="1240" height="1754"></canvas>
+        </div>
+		
+		
+	</body>
+    <script src="jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+		
+		var ctx1 = $('#c1')[0].getContext("2d");
+		var ctx2 = $('#c2')[0].getContext("2d");
+		
+		
+		// 將完整履歷放到下層  canvas2
+		var img = new Image();
+		img.src = 'page1.jpg';
+		img.onload = function(){
+			ctx2.drawImage(this,0,0,1240,1754)
+		}
+		
+		// 需要刮的履歷放在上層  canvas1
+		var img2 = new Image();
+		img2.src = 'page2.jpg';
+		img2.onload = function(){
+			ctx1.drawImage(this,0,0,1240,1754)
+		}
+		
+		// 監聽canvas的onmousedown事件
+		window.onmousedown = function(ev){ //onmousedown 按下滑鼠事件
+            window.onmousemove = function(e){//onmousedown 移動滑鼠事件
+                var w = 50;			// 清除筆刷的寬度
+                var h = 50;			// 清除筆刷的高度
+                var x = e.pageX - h/2;    // 清除筆刷的x位置
+                var y = e.pageY - $('#title').height() - 20 - w/2;		// 清除筆刷的y位置
+
+                ctx1.clearRect(x,y,w,h);
+            }
+		}
+
+		window.onmouseup = function(ev){
+            // 取消onmousemove事件
+            window.onmousemove = null;
+		}
+
+	</script>
+</html>
