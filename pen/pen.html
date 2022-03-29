@@ -18,10 +18,23 @@
 				position: absolute;
                 top: 0;
                 left: 0;
+				z-index:500;
 			}
             #title{
                 margin: 10px 0;
             }
+			.loading{
+				position:fixed;
+                top: 0;
+                left: 0;
+				width:100%;
+				height:100%;
+				z-index:1000;
+			}
+			.loading img{
+				width:100%;
+				height:100%;
+			}
 			
 		</style>
 	</head>
@@ -31,6 +44,9 @@
             <canvas id="c2" width="1240" height="1000"></canvas>
             <canvas id="c1" width="1240" height="1000"></canvas>
         </div>
+		<div class="loading">
+			<img src="loading.gif" />
+		</div>
 		
 		
 	</body>
@@ -76,6 +92,8 @@
             // 取消onmousemove事件
             window.onmousemove = null;
 		}
+		
+		setTimeout(()=>$('.loading').hide(),1000);
 
 	</script>
 </html>
