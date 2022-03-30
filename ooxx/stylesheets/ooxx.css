@@ -1,0 +1,47 @@
+/* line 1, ../sass/ooxx.scss */
+#main {
+  position: relative;
+  width: fit-content;
+  margin: 50px auto;
+  text-align: center;
+}
+/* line 6, ../sass/ooxx.scss */
+#main .area {
+  border: 3px solid #333;
+}
+/* line 8, ../sass/ooxx.scss */
+#main .area .row {
+  position: relative;
+  display: flex;
+}
+/* line 11, ../sass/ooxx.scss */
+#main .area .row .col {
+  position: flex;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #333;
+}
+/* line 16, ../sass/ooxx.scss */
+#main .area .row .col img {
+  position: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 90%;
+  height: 90%;
+}
+/* line 26, ../sass/ooxx.scss */
+#main .area .row .pointer {
+  cursor: pointer;
+}
+
+/* line 33, ../sass/ooxx.scss */
+#blue-txt {
+  color: blue;
+}
+
+/* line 36, ../sass/ooxx.scss */
+#red-txt {
+  color: red;
+}

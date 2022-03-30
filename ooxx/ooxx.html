@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>ooxx遊戲</title>
+        <link href="stylesheets/ooxx.css" media="screen, projection" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div id="main">
+            <h1>ooxx遊戲</h1>
+            <div class="area">
+                <div class="row">
+                    <div class="col pointer" data-row="0" data-col="0">
+            
+                    </div>
+                    <div class="col pointer" data-row="0" data-col="1">
+            
+                    </div>
+                    <div class="col pointer" data-row="0" data-col="2">
+            
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col pointer" data-row="1" data-col="0">
+            
+                    </div>
+                    <div class="col pointer" data-row="1" data-col="1">
+            
+                    </div>
+                    <div class="col pointer" data-row="1" data-col="2">
+            
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col pointer" data-row="2" data-col="0">
+            
+                    </div>
+                    <div class="col pointer" data-row="2" data-col="1">
+            
+                    </div>
+                    <div class="col pointer" data-row="2" data-col="2">
+            
+                    </div>
+                </div>
+            </div>
+            <p id="blue-txt">o方回合</p>
+            <p id="red-txt" style="display: none;">x方回合</p>
+            <p id="end-txt" style="display: none;"></p>
+            <button onClick="init()">重新遊玩</button>
+        </div>
+		
+	</body>
+    <script src="jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+        var user = 'o';
+        var end = 0;
+        var table = [
+            ['','',''],
+            ['','',''],
+            ['','','']
+        ]
+        var turn = 0;
+
+		$('.col').click(function(){
+            if(end){
+                return;
+            }
+
+            if(table[$(this).attr('data-row')][$(this).attr('data-col')] != ""){
+                return;
+            }
+
+            $('#blue-txt').toggle();
+            $('#red-txt').toggle();
+            $(this).removeClass('pointer');
+            table[$(this).attr('data-row')][$(this).attr('data-col')] = user;
+            turn++;
+            if(user == 'o'){
+                user = 'x';
+                $(this).append('<img src="O.png" alt="">');
+            }else if(user == 'x'){
+                user = 'o';
+                $(this).append('<img src="X.png" alt="">');
+            }
+
+            if(check(table)){
+                end = 1;
+                end_game();
+                if(user == 'o'){
+                    $('#end-txt').html('x獲勝');
+                }else if(user == 'x'){
+                    $('#end-txt').html('o獲勝');
+                }
+            }
+
+            if(turn >= 9){
+                end = 1;
+                end_game();
+                $('#end-txt').html('遊戲結束');
+            }
+            console.log(table);
+        });
+
+        function check(table){
+            for(var i = 0; i < table.length; i++){
+                if(table[i][0] && (table[i][0] == table[i][1]) && (table[i][1] == table[i][2])){
+                    return true;
+                }
+                if(table[0][i] && (table[0][i] == table[1][i]) && (table[1][i] == table[2][i])){
+                    return true;
+                }
+            }
+            if(table[0][0] && (table[0][0] == table[1][1]) && (table[1][1] == table[2][2])){
+                    return true;
+            }
+            if(table[0][2] && (table[0][2] == table[1][1]) && (table[1][1] == table[2][0])){
+                    return true;
+            }
+            
+            return false;
+        }
+
+        function end_game(){
+            $('#blue-txt').hide();
+            $('#red-txt').hide();
+            $('#end-txt').show();
+            $('.col').removeClass('pointer');
+            alert_game();
+        }
+
+        function alert_game(){
+            setTimeout(function() { alert("遊戲結束"); },100);
+        }
+
+        function init(){
+            user = 'o';
+            end = 0;
+            table = [
+                ['','',''],
+                ['','',''],
+                ['','','']
+            ]
+            turn = 0;
+            $('#blue-txt').show();
+            $('#red-txt').hide();
+            $('#end-txt').hide();
+            $('.col').addClass('pointer');
+            $('.col').html('');
+        }
+
+	</script>
+</html>

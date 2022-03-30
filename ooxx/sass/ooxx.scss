@@ -1,0 +1,38 @@
+#main{
+    position: relative;
+    width: fit-content;
+    margin: 50px auto;
+    text-align: center;
+    .area{
+        border: 3px solid #333;
+        .row{
+            position: relative;
+            display: flex;
+            .col{
+                position: flex;
+                width: 100px;
+                height: 100px;
+                border: 1px solid #333;
+                img{
+                    position: flex;
+                    -ms-flex-pack: center;
+                    justify-content: center;
+                    -ms-flex-align: center;
+                    align-items: center;
+                    width: 90%;
+                    height: 90%;
+                }
+            }
+            .pointer{
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+#blue-txt{
+    color: blue;
+}
+#red-txt{
+    color: red;
+}
