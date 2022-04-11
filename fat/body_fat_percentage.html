@@ -1,0 +1,74 @@
+<!doctype html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/base.css">
+
+    <title>體脂率計算機</title>
+  </head>
+  <body>
+    <div  id="app" class="">
+      <div class="contant">
+        <h6 class="padding">體脂率 = <br>(1.2 x BMI) + (0.23 x 年齡 – 5.4) - (10.8 x 性別)<br>男生的值為 1，女生為 0</h6>
+        <table>
+          <tr>
+            <td>
+              性別
+            </td>
+            <td>
+              <input type="radio" name="sex" value="男" v-model="sex">
+              <label for="sex">男</label>&nbsp;&nbsp;
+              <input type="radio" name="sex" value="女" v-model="sex">
+              <label for="sex">女</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              身高(cm)
+            </td>
+            <td>
+              <input type="number" v-model="height" min="100" max="200">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              體重(公斤)
+            </td>
+            <td>
+              <input type="number" v-model="kilo" min="0" max="200">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              年齡
+            </td>
+            <td>
+              <input type="number" v-model="age" min="0" max="200">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              估計體脂率
+            </td>
+            <td>
+              {{ ans }}
+            </td>
+          </tr>
+        </table>
+      </div>
+      <img v-if="note" class="padding" v-bind:src="note"/>
+
+    </div>
+
+    <script src="vendor/js/jquery.min.js" ></script>
+    <script src="vendor/js/popper.min.js" ></script>
+    <script src="vendor/js/bootstrap.min.js" ></script>
+    <script src="vendor/js/vue.global.js" ></script>
+    <script src="js/base.js" ></script>
+    <script>
+    </script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+.contant{
+    position: relative;
+    background-color: #ddd;
+    padding: 20px 30px;
+    margin: 10px auto;
+    max-width: 400px;
+    width: fit-content;
+    td{
+        padding: 5px;
+    }
+    .padding{
+        padding: 5px;
+    }
+}
+img{
+    width: 31vw;
+    max-width: 526px;
+    min-width: 300px;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+}
